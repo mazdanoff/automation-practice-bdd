@@ -156,7 +156,7 @@ def step_an_x_icon_is_displayed_in_the_email_address_field(driver: WebDriver):
     icon_properties = email_address_field.element.value_of_css_property("background")
     actual_icon_url = re.search(r'url\(\"(.*)\"', icon_properties).group(1) or ""
     assert_that(actual_icon_url, equal_to("../img/icon/form-error.png"),
-                f"The displayed icon is not OK, but \"{actual_icon_url}\"")
+                f"The displayed icon is not X, but \"{actual_icon_url}\"")
 
 @then("an OK icon is displayed in the password field")
 def step_an_ok_icon_is_displayed_in_the_password_field(driver: WebDriver):
@@ -172,7 +172,7 @@ def step_an_x_icon_is_displayed_in_the_password_field(driver: WebDriver):
     icon_properties = password_field.element.value_of_css_property("background")
     actual_icon_url = re.search(r'url\(\"(.*)\"', icon_properties).group(1) or ""
     assert_that(actual_icon_url, equal_to("../img/icon/form-error.png"),
-                f"The displayed icon is not OK, but \"{actual_icon_url}\"")
+                f"The displayed icon is not X, but \"{actual_icon_url}\"")
 
 @when("I input credentials with incorrectly formatted email")
 def step_i_input_credentials_with_incorrectly_formatted_email(driver: WebDriver):

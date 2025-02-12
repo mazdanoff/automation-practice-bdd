@@ -36,3 +36,10 @@ class AbsPageObject:
                 ec.visibility_of_element_located(locator))
         except TimeoutException:
             pass
+
+    def wait_for_text_to_be_present_in_element_located(self, locator: Tuple[str, str], text: str, timeout: int = 10):
+        try:
+            WebDriverWait(self.driver, timeout).until(
+                ec.text_to_be_present_in_element(locator, text))
+        except TimeoutException:
+            pass
