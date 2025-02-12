@@ -26,7 +26,7 @@ class Element:
         if self.wait_con is not None:
             wait = WebDriverWait(self._page_object.driver, self.timeout)
             condition = self.wait_con(self.locator)
-            return wait.until(condition)
+            wait.until(condition)
         return self._page_object.driver.find_element(*self.locator)
 
     def is_present(self):
