@@ -9,9 +9,9 @@ from conf.paths import drivers_dir, geckodriver_exe_path, geckodriver_zip_path
 from conf.urls import GECKODRIVER_URL
 
 @fixture
-def driver(download_driver):
+def driver():
     options = FirefoxOptions()
-    # options.add_argument("--headless")
+    options.add_argument("--headless")
     service = FirefoxService(executable_path=geckodriver_exe_path)
     firefox = Firefox(options=options, service=service)
     firefox.maximize_window()
@@ -20,7 +20,7 @@ def driver(download_driver):
     firefox.quit()
 
 
-@fixture
+@fixture(autouse=True, scope="session")
 def download_driver():
     if os.path.isfile(geckodriver_exe_path):
         return

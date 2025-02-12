@@ -8,7 +8,7 @@ from conf.paths import features_dir
 from conf.urls import MAIN_PAGE_URL
 
 @scenario(f"{features_dir}/main_page.feature", "Main Page display")
-def test_scenario():
+def test_main_page_display():
     pass
 
 @given("I open the browser")
