@@ -1,3 +1,4 @@
+PyHamcrest
 pytest-bdd==8.1.0
 pytest==8.3.4
 requests
