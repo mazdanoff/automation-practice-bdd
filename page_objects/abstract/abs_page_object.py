@@ -1,3 +1,5 @@
+import time
+from datetime import datetime, timedelta
 from typing import Tuple
 
 from selenium.common import NoSuchElementException, TimeoutException
@@ -43,3 +45,18 @@ class AbsPageObject:
                 ec.text_to_be_present_in_element(locator, text))
         except TimeoutException:
             pass
+
+    @staticmethod
+    def wait_until(condition, *args, **kwargs):
+        timeout = kwargs.pop("timeout", None) or 5
+        interval = kwargs.pop("interval", None) or 0.5
+
+        start_time = datetime.now()
+        end_time = start_time + timedelta(seconds=timeout)
+        while True:
+            condition_met = condition(*args, **kwargs)
+            if condition_met:
+                return
+            if datetime.now() > end_time:
+                break
+            time.sleep(interval)
