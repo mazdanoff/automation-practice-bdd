@@ -1,4 +1,12 @@
 Feature: Item sorting and filtering
+  """
+  Tests related to using sort and filter features on product category pages.
+  Cases in short:
+  - single filtering
+  - sorting
+  - combining filters from the same set of options (i.e. Tops and Dresses in Categories)
+  - combining filters from different sets of options (i.e. Tops from Categories and Black from Color)
+  """
 
   Scenario Outline: Item filtering
     Given 'WOMEN' category page is displayed
