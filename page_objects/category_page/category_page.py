@@ -1,4 +1,5 @@
 from page_objects.abstract.abs_base_page import AbsBasePage
+from page_objects.abstract.web_elements.dropdown import Dropdown
 from page_objects.category_page.category_page_locators import CategoryPageLocators as Locators
 from page_objects.category_page.category_page_item_list import ItemList
 from page_objects.category_page.filters.filter_availability import FilterAvailability
@@ -10,6 +11,8 @@ from page_objects.category_page.filters.filter_size import FilterSize
 class CategoryPage(AbsBasePage):
 
     item_list = ItemList(*Locators.ITEM_LIST)
+    sort_by = Dropdown(Locators.SORT_BY)
+
     categories_filter = FilterCategories(*Locators.FILTER_CATEGORIES)
     size_filter = FilterSize(*Locators.FILTER_SIZE)
     color_filter = FilterColor(*Locators.FILTER_COLOR)
