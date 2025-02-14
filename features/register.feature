@@ -1,4 +1,5 @@
 Feature: Register
+  """
   Tests covering functionalities related to registering an account on Your Logo site.
   Cases in short:
   - successful account registration (happy path)
@@ -6,6 +7,7 @@ Feature: Register
   - attempt to register using an existing email
   - attempt to register using incorrect email format
   - attempt to register while omitting a required field
+  """
 
   Scenario: Happy Path
 #    CANDIDATE NOTE:

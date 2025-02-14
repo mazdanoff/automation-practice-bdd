@@ -1,5 +1,7 @@
 Feature: Main Page display
+  """
   Sanity test to check if the page is even online
+  """
 
   Scenario: Main Page display
     Given I open the browser

@@ -26,5 +26,5 @@ class AbsBasePage(AbsPageObject, ABC):
         pass
 
     @abstractmethod
-    def wait_for_page_to_load(self, timeout: int):
+    def wait_for_page_to_load(self, timeout: int = 5):
         pass

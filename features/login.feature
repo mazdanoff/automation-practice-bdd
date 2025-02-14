@@ -1,4 +1,5 @@
 Feature: Login
+  """
   Tests covering functionalities related to signing in on YourLogo store.
   Cases in short:
   - successful login (happy path)
@@ -7,14 +8,15 @@ Feature: Login
   - highlighting email/password incorrect formatting
   - various alerts
   - redirection to login page
-
+  """
 
   Scenario: Happy Path
+    """
     Key notes:
     - visible 'Sign in' button is indicating no user is logged in
     - visible 'Sign out' button is indicating a user is signed in
     - the user account name matches the expected user (here: Romuald Mean)
-
+    """
     Given YourLogo main page is displayed
     * there's a 'Sign in' button in top navigation bar
 
