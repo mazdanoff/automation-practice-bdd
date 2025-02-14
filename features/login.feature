@@ -11,11 +11,12 @@ Feature: Login
   """
 
   Scenario: Happy Path
-    """Key notes:
+    """
+    Key notes:
     - visible 'Sign in' button is indicating no user is logged in
     - visible 'Sign out' button is indicating a user is signed in
-    - the user account name matches the expected user (here: Romuald Mean)"""
-
+    - the user account name matches the expected user (here: Romuald Mean)
+    """
     Given YourLogo main page is displayed
     * there's a 'Sign in' button in top navigation bar
 

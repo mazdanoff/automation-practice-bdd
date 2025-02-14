@@ -7,6 +7,10 @@ Feature: Item sorting and filtering
   - combining filters from the same set of options (i.e. Tops and Dresses in Categories)
   - combining filters from different sets of options (i.e. Tops from Categories and Black from Color)
   """
+  # CANDIDATE NOTE:
+  # I noticed that there are some issues with statuses related to being in stock for products.
+  # I made sure to bring the issues into light with a few test cases. I assume this is deliberately prepared
+  # to emulate finding issues, but noting just in case: there will be fails.
 
   Scenario Outline: Item filtering
     Given 'WOMEN' category page is displayed
