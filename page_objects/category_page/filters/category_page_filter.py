@@ -3,7 +3,7 @@ from selenium_datatable import DataTable
 
 class CategoryPageFilter(DataTable):
 
-    def get_by_name(self, name):
+    def get_option_by_name(self, name):
         """
         The reason this is done this way is due to unlucky text coupling on the page, like so:
 		<a href='...'>Tops<span> (2)</span></a>

@@ -18,6 +18,14 @@ def test_item_filtering():
 def test_item_sorting():
     pass
 
+@scenario("Combining same category filters")
+def test_combining_same_category_filters():
+    pass
+
+@scenario("Combining different category filters")
+def test_combining_different_category_filters():
+    pass
+
 
 @given("'WOMEN' category page is displayed")
 def step_women_category_page_is_displayed(driver: WebDriver):
@@ -25,10 +33,12 @@ def step_women_category_page_is_displayed(driver: WebDriver):
     category_page.wait_for_page_to_load()
     assert_that(category_page.is_page_displayed(), "'WOMEN' category page is not displayed")
 
-@given(parsers.parse("there are {expected_amount:d} items available"))
-@then(parsers.parse("there are {expected_amount:d} items available"))
+@given(parsers.parse("there are {expected_amount:d} items listed"))
+@then(parsers.parse("there are {expected_amount:d} items listed"))
 def step_there_are_x_items_available(driver: WebDriver, expected_amount):
-    actual_amount = len(CategoryPage(driver).item_list)
+    category_page = CategoryPage(driver)
+    category_page.wait_until_item_count_matches(expected_amount)
+    actual_amount = len(category_page.item_list)
     assert_that(actual_amount, equal_to(expected_amount),
                 f"Item amount mismatch: expected {expected_amount}, but is {actual_amount}")
 
@@ -42,10 +52,9 @@ def step_i_filter_by(driver: WebDriver, option, filter_name):
         "Availability": category_page.availability_filter,
     }
     current_filter = filters[filter_name]  # i.e. Size filters
-    option = current_filter.get_by_name(name=option)  # i.e. 'L' size in Size filters
-    amount_preview = current_filter.get_amount(option.amount_preview.text)
+    option = current_filter.get_option_by_name(name=option)  # i.e. 'L' size in Size filters
     option.checkbox.click()
-    category_page.wait_until_item_count_matches(expected_amount=amount_preview)
+
 
 @when(parsers.parse("I sort by {option}"))
 def step_i_sort_by_option(driver: WebDriver, option: str):

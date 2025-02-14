@@ -1,19 +1,18 @@
 Feature: Login
-  Tests covering functionalities related to signing in on YourLogo store.
+  """Tests covering functionalities related to signing in on YourLogo store.
   Cases in short:
   - successful login (happy path)
   - unsuccessful login due to a wrong password
   - highlighting email/password correct formatting
   - highlighting email/password incorrect formatting
   - various alerts
-  - redirection to login page
-
+  - redirection to login page"""
 
   Scenario: Happy Path
-    Key notes:
+    """Key notes:
     - visible 'Sign in' button is indicating no user is logged in
     - visible 'Sign out' button is indicating a user is signed in
-    - the user account name matches the expected user (here: Romuald Mean)
+    - the user account name matches the expected user (here: Romuald Mean)"""
 
     Given YourLogo main page is displayed
     * there's a 'Sign in' button in top navigation bar

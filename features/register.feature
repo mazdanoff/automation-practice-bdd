@@ -1,11 +1,11 @@
 Feature: Register
-  Tests covering functionalities related to registering an account on Your Logo site.
+  """Tests covering functionalities related to registering an account on Your Logo site.
   Cases in short:
   - successful account registration (happy path)
   - email formatting highlighting
   - attempt to register using an existing email
   - attempt to register using incorrect email format
-  - attempt to register while omitting a required field
+  - attempt to register while omitting a required field"""
 
   Scenario: Happy Path
 #    CANDIDATE NOTE:
