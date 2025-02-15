@@ -2,7 +2,8 @@ from selenium.webdriver.common.by import By
 from selenium_datatable import DataTable, Column
 
 
-class ItemList(DataTable):
+class ProductList(DataTable):
+    """Appears both on category page and search page"""
 
     rows_locator = (By.CSS_SELECTOR, ".product_list > li")
 

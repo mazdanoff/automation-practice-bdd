@@ -1,6 +1,6 @@
 from page_objects.abstract.abs_page_object import AbsPageObject
 from page_objects.abstract.web_elements.button import Button
-from page_objects.top_navigation_bar.top_navigation_bar_object_locators import TopNavigationBarObjectLocators as Locators
+from page_objects.account_navigation_bar.account_navigation_bar_object_locators import TopNavigationBarObjectLocators as Locators
 
 
 class TopNavigationBarObject(AbsPageObject):

@@ -3,7 +3,9 @@ from datetime import datetime, timedelta
 from typing import Tuple
 
 from selenium.common import NoSuchElementException, TimeoutException
+from selenium.webdriver import ActionChains
 from selenium.webdriver.remote.webdriver import WebDriver
+from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.support.wait import WebDriverWait
 
@@ -60,3 +62,6 @@ class AbsPageObject:
             if datetime.now() > end_time:
                 break
             time.sleep(interval)
+
+    def hover_over(self, to_element):
+        ActionChains(self.driver).move_to_element(to_element).perform()

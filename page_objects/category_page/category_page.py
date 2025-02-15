@@ -1,16 +1,16 @@
 from page_objects.abstract.abs_base_page import AbsBasePage
 from page_objects.abstract.web_elements.dropdown import Dropdown
 from page_objects.category_page.category_page_locators import CategoryPageLocators as Locators
-from page_objects.category_page.category_page_item_list import ItemList
 from page_objects.category_page.filters.filter_availability import FilterAvailability
 from page_objects.category_page.filters.filter_categories import FilterCategories
 from page_objects.category_page.filters.filter_color import FilterColor
 from page_objects.category_page.filters.filter_size import FilterSize
+from page_objects.product_list.product_list import ProductList
 
 
 class CategoryPage(AbsBasePage):
 
-    item_list = ItemList(*Locators.ITEM_LIST)
+    product_list = ProductList(*Locators.ITEM_LIST)
     sort_by = Dropdown(Locators.SORT_BY)
 
     categories_filter = FilterCategories(*Locators.FILTER_CATEGORIES)
@@ -25,4 +25,4 @@ class CategoryPage(AbsBasePage):
         self.wait_for_visibility_of_element_located(Locators.ITEM_LIST)
 
     def wait_until_item_count_matches(self, expected_amount):
-        self.wait_until(lambda: len(self.item_list) == expected_amount)
+        self.wait_until(lambda: len(self.product_list) == expected_amount)

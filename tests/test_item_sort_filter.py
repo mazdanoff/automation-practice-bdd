@@ -38,7 +38,7 @@ def step_women_category_page_is_displayed(driver: WebDriver):
 def step_there_are_x_items_available(driver: WebDriver, expected_amount):
     category_page = CategoryPage(driver)
     category_page.wait_until_item_count_matches(expected_amount)
-    actual_amount = len(category_page.item_list)
+    actual_amount = len(category_page.product_list)
     assert_that(actual_amount, equal_to(expected_amount),
                 f"Item amount mismatch: expected {expected_amount}, but is {actual_amount}")
 
@@ -59,35 +59,35 @@ def step_i_filter_by(driver: WebDriver, option, filter_name):
 @when(parsers.parse("I sort by {option}"))
 def step_i_sort_by_option(driver: WebDriver, option: str):
     category_page = CategoryPage(driver)
-    presorted_item_list = [element.name.text for element in category_page.item_list]
+    presorted_item_list = [element.name.text for element in category_page.product_list]
     category_page.sort_by.text = option
 
     # TODO: consider waiting for the loading gif to appear, then wait for it to disappear
-    category_page.wait_until(lambda: presorted_item_list != [element.name.text for element in category_page.item_list])
+    category_page.wait_until(lambda: presorted_item_list != [element.name.text for element in category_page.product_list])
 
 @then("items are sorted alphabetically")
 def step_items_are_sorted_alphabetically(driver: WebDriver):
-    current_order = [product.name.text for product in CategoryPage(driver).item_list]
+    current_order = [product.name.text for product in CategoryPage(driver).product_list]
     assert_that(current_order, equal_to(sorted(current_order, key=str)))
 
 @then("items are sorted alphabetically in reverse")
 def step_items_are_sorted_alphabetically_in_reverse(driver: WebDriver):
-    current_order = [product.name.text for product in CategoryPage(driver).item_list]
+    current_order = [product.name.text for product in CategoryPage(driver).product_list]
     assert_that(current_order, equal_to(sorted(current_order, key=str, reverse=True)))
 
 @then("items are sorted by price with lowest first")
 def step_items_are_sorted_by_price_with_lowest_first(driver: WebDriver):
-    current_order = [product.price.text for product in CategoryPage(driver).item_list]
+    current_order = [product.price.text for product in CategoryPage(driver).product_list]
     assert_that(current_order, equal_to(sorted(current_order, key=lambda text: int(text.strip("$")))))
 
 @then("items are sorted by price with highest first")
 def step_items_are_sorted_by_price_with_highest_first(driver: WebDriver):
-    current_order = [product.price.text for product in CategoryPage(driver).item_list]
+    current_order = [product.price.text for product in CategoryPage(driver).product_list]
     assert_that(current_order, equal_to(sorted(current_order, key=lambda text: int(text.strip("$")), reverse=True)))
 
 @then("items are sorted with out of stock items pushed to the list bottom")
 def step_items_are_sorted_with_out_of_stock_items_pushed_to_the_list_bottom(driver: WebDriver):
-    current_order = [product.availability.text for product in CategoryPage(driver).item_list]
+    current_order = [product.availability.text for product in CategoryPage(driver).product_list]
     # noticed only 2 statuses: "Product available with different options" and "Out of stock"
     # alphabetical order is enough here to verify sorting,
     # but a pre-defined ordering would be probably needed with more statuses in the long run
