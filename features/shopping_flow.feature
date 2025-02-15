@@ -4,8 +4,6 @@ Feature: Shopping flow
   - basic flow, from main page, through picking products, cart summary
     and payments screens up to order confirmation
   - search bar
-      # I personally deem this essential in shopping to avoid browsing long lists,
-        thus my proposal to include this here
   - menu options in cart summary screen
   - cart preview in top navigation
   - attempt to avoid agreeing to terms of services
