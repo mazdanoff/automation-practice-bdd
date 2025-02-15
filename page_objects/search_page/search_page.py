@@ -1,7 +1,7 @@
 from page_objects.abstract.abs_base_page import AbsBasePage
 from page_objects.abstract.web_elements.text import Text
 from page_objects.search_page.search_page_locators import SearchPageLocators as Locators
-from page_objects.product_list import ProductList
+from page_objects.product_list.product_list import ProductList
 
 
 class SearchPage(AbsBasePage):

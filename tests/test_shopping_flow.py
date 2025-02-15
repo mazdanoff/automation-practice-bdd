@@ -6,7 +6,7 @@ from selenium.webdriver.firefox.webdriver import WebDriver
 
 from conf.paths import features_dir
 from conf.urls import MAIN_PAGE_URL
-from page_objects.cart_preview import CartPreview
+from page_objects.cart_preview.cart_preview import CartPreview
 from page_objects.choose_address_page.choose_address_page import ChooseAddressPage
 from page_objects.category_navigation_bar.category_navigation_bar import CategoryNavigationBar
 from page_objects.category_navigation_bar.women_submenu import WomenSubmenu

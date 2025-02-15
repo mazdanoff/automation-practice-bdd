@@ -5,7 +5,7 @@ from page_objects.category_page.filters.filter_availability import FilterAvailab
 from page_objects.category_page.filters.filter_categories import FilterCategories
 from page_objects.category_page.filters.filter_color import FilterColor
 from page_objects.category_page.filters.filter_size import FilterSize
-from page_objects.product_list import ProductList
+from page_objects.product_list.product_list import ProductList
 
 
 class CategoryPage(AbsBasePage):
