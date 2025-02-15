@@ -5,7 +5,7 @@ from zipfile import ZipFile
 import requests
 from pytest import fixture, hookimpl
 from selenium.webdriver import Firefox, FirefoxOptions, FirefoxService
-from selenium.webdriver.remote.webdriver import WebDriver
+from selenium.webdriver.firefox.webdriver import WebDriver
 
 from conf.paths import drivers_dir, geckodriver_exe_path, geckodriver_zip_path, screenshots_dir
 from conf.urls import GECKODRIVER_URL
@@ -57,5 +57,5 @@ def attach_screenshot(item):
     driver: WebDriver = request.getfixturevalue('driver')
     screenshot_path = os.path.join(screenshots_dir, f"{timestamp}.png")
     os.makedirs(screenshots_dir, exist_ok=True)
-    driver.save_screenshot(screenshot_path)
+    driver.get_full_page_screenshot_as_file(screenshot_path)
     return os.path.join("screenshots", f"{timestamp}.png")
