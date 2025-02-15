@@ -54,7 +54,10 @@ def step_i_filter_by(driver: WebDriver, option, filter_name):
     current_filter = filters[filter_name]  # i.e. Size filters
     option = current_filter.get_option_by_name(name=option)  # i.e. 'L' size in Size filters
     option.checkbox.click()
-
+    # TODO: add wait for product list reload
+    # reason: if this step is used at least twice in a row,
+    # the page is still processing the first filter while we try to use another
+    # which may result in a StaleElementReferenceException
 
 @when(parsers.parse("I sort by {option}"))
 def step_i_sort_by_option(driver: WebDriver, option: str):
