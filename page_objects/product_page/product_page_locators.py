@@ -4,6 +4,7 @@ from selenium.webdriver.common.by import By
 class ProductPageLocators:
 
     # righthand menu
+    PRODUCT_NAME = (By.TAG_NAME, "h1")
     QUANTITY = (By.ID, "quantity_wanted")
     SIZE = (By.ID, "group_1")
     COLOR_LIST = (By.ID, "color_to_pick_list")

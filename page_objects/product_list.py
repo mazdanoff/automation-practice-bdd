@@ -2,7 +2,7 @@ from selenium.webdriver.common.by import By
 from selenium_datatable import DataTable, Column
 
 
-class ItemList(DataTable):
+class ProductList(DataTable):
 
     rows_locator = (By.CSS_SELECTOR, ".product_list > li")
 
