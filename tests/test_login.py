@@ -10,7 +10,7 @@ from page_objects.login_or_register.already_registered_section_object import Alr
 from page_objects.login_or_register.login_or_register_page import LoginOrRegisterPage
 from page_objects.my_account.my_account_page import MyAccountPage
 from page_objects.main_page.main_page import MainPage
-from page_objects.top_navigation_bar.top_navigation_bar_object import TopNavigationBarObject
+from page_objects.account_navigation_bar.account_navigation_bar_object import TopNavigationBarObject
 
 
 scenario = partial(scenario, f"{features_dir}/login.feature")

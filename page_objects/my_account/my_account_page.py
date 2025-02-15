@@ -8,7 +8,7 @@ class MyAccountPage(AbsBasePage):
     header = Text(Locators.HEADER)
 
     def is_page_displayed(self):
-        return self.header.is_displayed() and self.header.text == "My account"
+        return self.header.is_displayed() and self.header.text == "MY ACCOUNT"
 
     def wait_for_page_to_load(self, timeout: int = 5):
         self.wait_for_visibility_of_element_located(self.header.locator)
