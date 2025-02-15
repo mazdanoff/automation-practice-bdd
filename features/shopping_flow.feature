@@ -1,11 +1,18 @@
 Feature: Shopping flow
+  """
+  This test suite covers:
+  - basic flow, from main page, through picking products, cart summary
+    and payments screens up to order confirmation
+  - search bar
+      # I personally deem this essential in shopping to avoid browsing long lists,
+        thus my proposal to include this here
+  - menu options in cart summary screen
+  - cart preview in top navigation
+  - attempt to avoid agreeing to terms of services
+  """
 
   Scenario: Basic flow
-    #TODO: 1. Come up with a solution to provide address beforehand
-    #TODO: 2. Add handling of address form popping up in the middle of shopping flow
     Given YourLogo main page is displayed
-    # And I'm logged in
-    # And I have provided my address beforehand
 
     When I go to 'Tops' category
     And I pick the 'Blouse' item
@@ -98,3 +105,6 @@ Feature: Shopping flow
   # further ideas
   Scenario: Emptying cart from cart preview reverses to shopping cart summary page
   Scenario: Decreasing product quantity to 0 changes view in shopping cart summary page
+  Scenario: Basic flow when user did not provide their address beforehand
+    #TODO: 1. Come up with a solution to provide address beforehand
+    #TODO: 2. Add handling of address form popping up in the middle of shopping flow
