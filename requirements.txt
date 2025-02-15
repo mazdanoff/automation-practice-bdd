@@ -1,6 +1,7 @@
 PyHamcrest
 pytest-bdd==8.1.0
 pytest==8.3.4
+pytest-html==4.1.1
 requests
 selenium==4.28.1
 selenium-datatable==0.3.3

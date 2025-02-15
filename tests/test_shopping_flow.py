@@ -152,7 +152,7 @@ def step_i_proceed_to_checkout_on_cart_summary_page(driver: WebDriver):
 def step_i_sign_in(driver: WebDriver):
     login_or_register_page = LoginOrRegisterPage(driver)
     login_or_register_page.wait_for_page_to_load()
-    assert_that(login_or_register_page.is_page_displayed(), "FILL ME IN")
+    assert_that(login_or_register_page.is_page_displayed(), "Login page is not displayed")
     login_or_register_page.already_registered.submit_form(CREDENTIALS)
 
 @given("I choose my delivery address")
@@ -160,30 +160,31 @@ def step_i_sign_in(driver: WebDriver):
 def step_i_choose_my_delivery_address(driver: WebDriver):
     address_page = ChooseAddressPage(driver)
     address_page.wait_for_page_to_load()
-    assert_that(address_page.is_page_displayed(), "FILL ME IN")
+    assert_that(address_page.is_page_displayed(), "Addresses page is not displayed")
     address_page.proceed_to_checkout.click()
 
 @when("I choose shipping and agree to terms of service")
 def step_i_agree_to_terms_of_service(driver: WebDriver):
     shipping_page = ChooseShippingPage(driver)
     shipping_page.wait_for_page_to_load()
-    assert_that(shipping_page.is_page_displayed(), "FILL ME IN")
+    assert_that(shipping_page.is_page_displayed(), "Shipping page is not displayed")
     shipping_page.terms_of_service.click()
-    assert_that(shipping_page.terms_of_service.is_selected(), "FILL ME IN")
+    assert_that(shipping_page.terms_of_service.is_selected(),
+                "Terms of service checkbox is not selected despite clicking on it")
     shipping_page.proceed_to_checkout.click()
 
 @when("I choose payment by bank-wire")
 def step_i_choose_payment_by_bank_wire(driver: WebDriver):
     payment_method_page = ChoosePaymentMethodPage(driver)
     payment_method_page.wait_for_page_to_load()
-    assert_that(payment_method_page.is_page_displayed(), "FILL ME IN")
+    assert_that(payment_method_page.is_page_displayed(), "Paymen method page is not displayed")
     payment_method_page.pay_by_bank_wire.click()
 
 @when("I confirm my order")
 def step_i_confirm_my_order(driver: WebDriver):
     order_summary_page = OrderSummaryPage(driver)
     order_summary_page.wait_for_page_to_load()
-    assert_that(order_summary_page.is_page_displayed(), "FILL ME IN")
+    assert_that(order_summary_page.is_page_displayed(), "Order summary page is not displayed")
     order_summary_page.confirm_order_button.click()
 
 @when(parsers.parse("I type '{phrase}' into the search bar"))
@@ -204,7 +205,7 @@ def step_i_choose_the_search_bars_first_hint(driver: WebDriver):
 def step_order_confirmation_page_is_displayed(driver: WebDriver):
     order_confirmation_page = OrderConfirmationPage(driver)
     order_confirmation_page.wait_for_page_to_load(10)
-    assert_that(order_confirmation_page.is_page_displayed(), "FILL ME IN")
+    assert_that(order_confirmation_page.is_page_displayed(), "Order confirmation page is not displayed")
 
 @then(parsers.parse("a '{message}' message is displayed"))
 def step_a_your_order_on_my_shop_is_complete_message_is_displayed(driver: WebDriver, message: str):
@@ -215,24 +216,24 @@ def step_a_your_order_on_my_shop_is_complete_message_is_displayed(driver: WebDri
 def step_the_search_page_for_phrase_is_displayed(driver: WebDriver, phrase: str):
     search_page = SearchPage(driver)
     search_page.wait_for_page_to_load()
-    assert_that(search_page.is_page_displayed(), "FILL ME IN")
-    assert_that(phrase.upper() in search_page.header.text, "FILL ME IN")
+    assert_that(search_page.is_page_displayed(), "Search page is nto displayed")
+    assert_that(phrase.upper() in search_page.header.text, "The search page header does not match the searched phrase")
 
 @then(parsers.parse("the first item's name includes a '{phrase}' word"))
 def step_the_first_items_name_includes_a_phrase_word(driver: WebDriver, phrase):
     first_item = SearchPage(driver).product_list[0]
-    assert_that(phrase in first_item.name.text, "FILL ME IN")
+    assert_that(phrase in first_item.name.text, "The picked item does not include the searched phrase")
 
 @then("a product page is displayed")
 def step_a_product_page_is_displayed(driver: WebDriver):
     product_page = ProductPage(driver)
     product_page.wait_for_page_to_load()
-    assert_that(product_page.is_page_displayed(), "FILL ME IN")
+    assert_that(product_page.is_page_displayed(), "Product page is not displayed")
 
 @then(parsers.parse("the product's name is '{product_name}'"))
 def step_the_products_name_is_blouse(driver: WebDriver, product_name: str):
     assert_that(ProductPage(driver).product_name.text, equal_to(product_name),
-                "FILL ME IN")
+                "Product page does not match the expected '{}' product".format(product_name))
 
 @when("I try to proceed through shipping page without accepting terms of service")
 def step_i_try_to_proceed_through_shipping_page_without_accepting_terms_of_service(driver: WebDriver):
@@ -243,12 +244,12 @@ def step_i_try_to_proceed_through_shipping_page_without_accepting_terms_of_servi
 @then("a notification pops up on shipping page")
 def step_a_notification_pops_up_on_shipping_page(driver: WebDriver):
     notification_popup = ChooseShippingPage(driver).notification_popup
-    assert_that(notification_popup.is_displayed(), "FILL ME IN")
+    assert_that(notification_popup.is_displayed(), "Notification popup is not displayed")
 
 @then(parsers.parse("the message says '{message}'"))
 def step_a_notification_pops_up_on_shipping_page(driver: WebDriver, message: str):
     notification_popup = ChooseShippingPage(driver).notification_popup
-    assert_that(notification_popup.text, equal_to(message), "FILL ME IN")
+    assert_that(notification_popup.text, equal_to(message), "The notification message is different")
 
 @when(parsers.parse("I decrease quantity by {amount} in cart"))
 def step_i_decrease_quantity_by_amount_in_cart(driver: WebDriver, amount: str):
@@ -264,11 +265,12 @@ def step_i_increase_quantity_by_amount_in_cart(driver: WebDriver, amount: str):
 def step_quantity_changes_to_result_amount(driver: WebDriver, result_amount: str):
     cart_summary_page = ShoppingCartSummaryPage(driver)
     cart_summary_page.wait_for_quantity_to_change(to=result_amount)
-    assert_that(cart_summary_page.cart_quantity.value, equal_to(result_amount), "FILL ME IN")
+    assert_that(cart_summary_page.cart_quantity.value, equal_to(result_amount), "Quantity does not match")
 
 @then(parsers.parse("total price changes to {total}"))
 def step_total_price_changes_to(driver: WebDriver, total: str):
-    assert_that(ShoppingCartSummaryPage(driver).total_price.text, equal_to(total), "FILL ME IN")
+    assert_that(ShoppingCartSummaryPage(driver).total_price.text, equal_to(total),
+                "Total price does not match the '{}' value".format(total))
 
 @when("I hover over cart icon in top navigation")
 def step_i_hover_over_cart_icon_in_top_navigation(driver: WebDriver):
@@ -278,10 +280,10 @@ def step_i_hover_over_cart_icon_in_top_navigation(driver: WebDriver):
 
 @then("a cart preview is shown")
 def step_a_cart_preview_is_shown(driver: WebDriver):
-    assert_that(CartPreview(driver).is_displayed(), "FILL ME IN")
+    assert_that(CartPreview(driver).is_displayed(), "Cart preview is not displayed")
 
 @then(parsers.parse("there's '{product_name}' item with a quantity of {product_qty}"))
 def step_a_cart_preview_is_shown(driver: WebDriver, product_name: str, product_qty: str):
     cart = CartPreview(driver)
-    assert_that(cart.product_name.text, equal_to(product_name), "FILL ME IN")
-    assert_that(cart.product_qty.text, equal_to(product_qty), "FILL ME IN")
+    assert_that(cart.product_name.text, equal_to(product_name), "Product name does not match")
+    assert_that(cart.product_qty.text, equal_to(product_qty), "Product quantity does not match")

@@ -122,25 +122,25 @@ def step_already_registered_section_is_displayed(driver: WebDriver):
 def step_the_email_address_field_is_highlighted_in_green(driver: WebDriver):
     email_address_field = AlreadyRegisteredSection(driver).email_address
     actual_color = email_address_field.element.value_of_css_property("color")
-    assert_that(actual_color, equal_to("rgb(53, 179, 63)"))  #35b33f
+    assert_that(actual_color, equal_to("rgb(53, 179, 63)"), "Field is highlighted differently")  #35b33f
 
 @then("the password field is highlighted in green")
 def step_the_password_field_is_highlighted_in_green(driver: WebDriver):
     password_field = AlreadyRegisteredSection(driver).password
     actual_color = password_field.element.value_of_css_property("color")
-    assert_that(actual_color, equal_to("rgb(53, 179, 63)"))  #35b33f
+    assert_that(actual_color, equal_to("rgb(53, 179, 63)"), "Field is highlighted differently")  #35b33f
 
 @then("the email address field is highlighted in red")
 def step_the_email_address_field_is_highlighted_in_red(driver: WebDriver):
     email_address_field = AlreadyRegisteredSection(driver).email_address
     actual_color = email_address_field.element.value_of_css_property("color")
-    assert_that(actual_color, equal_to("rgb(241, 51, 64)"))  #f13340
+    assert_that(actual_color, equal_to("rgb(241, 51, 64)"), "Field is highlighted differently")  #f13340
 
 @then("the password field is highlighted in red")
 def step_the_password_field_is_highlighted_in_red(driver: WebDriver):
     password_field = AlreadyRegisteredSection(driver).password
     actual_color = password_field.element.value_of_css_property("color")
-    assert_that(actual_color, equal_to("rgb(241, 51, 64)"))  #f13340
+    assert_that(actual_color, equal_to("rgb(241, 51, 64)"), "Field is highlighted differently")  #f13340
 
 @then("an OK icon is displayed in the email address field")
 def step_an_ok_icon_is_displayed_in_the_email_address_field(driver: WebDriver):

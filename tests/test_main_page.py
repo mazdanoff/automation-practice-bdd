@@ -1,3 +1,4 @@
+from hamcrest import assert_that
 from pytest_bdd import scenario, given, when, then
 from selenium.webdriver.firefox.webdriver import WebDriver
 from selenium.webdriver.support import expected_conditions as EC
@@ -21,6 +22,8 @@ def open_main_page_url(driver: WebDriver):
 
 @then("the YourLogo shop's main page is displayed")
 def main_page_is_displayed(driver):
+    header_logo_locator = (By.ID, "header_logo")
     wait(driver, 5).until(
-        EC.visibility_of_element_located((By.ID, "header_logo"))
+        EC.visibility_of_element_located(header_logo_locator)
     )
+    assert_that(driver.find_element(*header_logo_locator).is_displayed())
