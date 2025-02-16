@@ -15,6 +15,8 @@ The project requires from user to have Firefox installed beforehand. The driver 
 Firstly, make a virtual environment:
 `python -m venv your_venv`
 
+Make sure to activate it straight away: `your_venv\Scripts\activate`. Your handle should now start with `(your_venv)`.
+
 Secondly, install dependencies:
 `pip install -r requirements.txt`
 
