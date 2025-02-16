@@ -27,3 +27,12 @@ Everything should be set up to run tests:
 `pytest tests --html=reports/report.html`
 
 **Note:** There are 4 tests expected to fail every time, as they relate to one bugged feature. There may also be a few other cases that will fail with `StaleElementReferenceException`. This is a documented bug, more about it in `test_item_sort_filter.py, line 57`.
+
+#### Other ideas (realizable or not):
+
+- (tests) long inactivity time, to verify of an automatic sign out happens or not
+- (tests) more incorrect email formats, realized by Scenario Outline
+- (tests) non-English characters in email/password handling
+- (tests) products in cart saved for an account: log in -> add some products -> check cart is not empty -> log out -> check that cart is empty -> log in again -> check cart is not empty
+- (tests) removing cart contents while past the shopping-cart summary screen already
+- (tests) removing last cart item by clicking "-" button and checking how the page behaves
