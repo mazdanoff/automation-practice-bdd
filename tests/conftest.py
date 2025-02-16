@@ -28,6 +28,7 @@ def download_driver():
         return
 
     response = requests.get(GECKODRIVER_URL, stream=True)
+    os.makedirs(drivers_dir, exist_ok=True)
 
     with open(geckodriver_zip_path, mode="wb") as file:
         for chunk in response.iter_content(chunk_size=10 * 1024):  # 10 kilobytes
