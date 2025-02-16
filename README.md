@@ -36,3 +36,4 @@ Everything should be set up to run tests:
 - (tests) products in cart saved for an account: log in -> add some products -> check cart is not empty -> log out -> check that cart is empty -> log in again -> check cart is not empty
 - (tests) removing cart contents while past the shopping-cart summary screen already
 - (tests) removing last cart item by clicking "-" button and checking how the page behaves
+- (misc) browser factory using factory pattern to easily test pages on different browsers
